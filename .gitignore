@@ -1,7 +1,3 @@
-# This .gitignore file should be placed at the root of your Unity project directory
-#
-# Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
-#
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
@@ -9,8 +5,11 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Mm]emoryCaptures/
-
-# Asset meta data should only be ignored when the corresponding asset is also ignored
+/[Uu]ser[Ss]ettings/
+/UserSettings/EditorUserSettings.asset
+/Assets/VoodooPackages/TinySauce/Analytics/GameAnalytics/3rdParty/GameAnalytics/Plugins/Playmaker/Examples/GameAnalyticsPlayMakerDemo.unitypackage.meta
+**/[Uu]ser[Ss]ettings/
+# Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
@@ -21,6 +20,7 @@
 
 # Visual Studio cache directory
 .vs/
+.idea/
 
 # Gradle cache directory
 .gradle/
@@ -57,4 +57,6 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
-
+ProjectSettings/boot.config
+ProjectSettings/MemorySettings.asset
+Assets/Project/Scenes/GameLevel.meta
