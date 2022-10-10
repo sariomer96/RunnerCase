@@ -6,7 +6,12 @@ ModelImporter:
   - first:
       74: -126210440812934267
     second: T-Pose
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: e2999583f2a40db4c845c6f251c617a8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
