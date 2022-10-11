@@ -15,7 +15,7 @@ public class Character : MonoBehaviour
  
     void Start()
     {
-        InputPanel.Instance.OnPointerUpEvent.AddListener(OnPoint);
+     
         InputPanel.Instance.OnDragDelta.AddListener(Drag);
         
        
@@ -54,11 +54,7 @@ public class Character : MonoBehaviour
     }
   
 
-    public void OnPoint()  //PLAYER
-    {
-        // targetPos = Vector3.zero;
-    }
-
+  
 
    
 }
