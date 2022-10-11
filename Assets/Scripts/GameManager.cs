@@ -1,12 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class GameManager : MonoSingleton<GameManager>
     // Start is called before the first frame update
 {
-    public Character _character;
+    public Character character;
     public bool isPunch = false;
     public int money,moneyRate;
     public Animator characterAnim;
@@ -16,7 +17,7 @@ public class GameManager : MonoSingleton<GameManager>
     public string state = "IdleRoutine";
     public Transform leftHand, rightHand;
     public float handScaleRate = 0.2f;
-  
+    public CameraFollow cameraFollow;
     private void Start()
     {
         StartGame();
@@ -26,8 +27,11 @@ public class GameManager : MonoSingleton<GameManager>
 
     void StartGame()
     {
-        _character = FindObjectOfType<Character>();
-        characterAnim = _character.transform.GetComponentInChildren<Animator>();
+       
+       
+        cameraFollow = FindObjectOfType<CameraFollow>();
+        cameraFollow.StartCoroutine("FollowRoutine");
+        characterAnim = character.transform.GetComponentInChildren<Animator>();
         StartCoroutine("DecisionAnimRoutine");
         StartCoroutine(state);
      
@@ -37,8 +41,8 @@ public class GameManager : MonoSingleton<GameManager>
     {
         if (Input.GetMouseButtonDown(0)&&!tapToPlay)
         {
-            _character.StartCoroutine("MoveRoutine");
-           InputPanel.Instance.OnDragDelta.AddListener(_character.Drag);
+            character.StartCoroutine("MoveRoutine");
+           InputPanel.Instance.OnDragDelta.AddListener(character.Drag);
 
             tapToPlay = true;
 
@@ -109,6 +113,7 @@ public class GameManager : MonoSingleton<GameManager>
         if (state=="DanceRoutine")
         {
             RegisterAnimation("Dance");
+      
             yield return null;
         }
 

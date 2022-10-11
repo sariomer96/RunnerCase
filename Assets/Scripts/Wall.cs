@@ -16,8 +16,10 @@ public class Wall : MonoBehaviour,IHandGrow
         if (GameManager.Instance.leftHand.transform.localScale.x<=1.2f&&character)
         {
             
+            GameManager.Instance.cameraFollow.StopCoroutine("FollowRoutine");
+            GameManager.Instance.cameraFollow.StartCoroutine("CamZoom");
             GameManager.Instance.isFinishLevel = true;
-            GameManager.Instance._character.StopCoroutine("MoveRoutine");
+            GameManager.Instance.character.StopCoroutine("MoveRoutine");
             other.enabled = false;
         }
         else if(character)
