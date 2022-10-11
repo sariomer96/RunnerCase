@@ -7,6 +7,7 @@ public class GameManager : MonoSingleton<GameManager>
     // Start is called before the first frame update
 {
     public Character _character;
+    public int money,moneyRate;
     public Animator characterAnim;
     public bool tapToPlay = false;
     [SerializeField] private bool isFinishLevel = false;
