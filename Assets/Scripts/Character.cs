@@ -13,7 +13,7 @@ public class Character : MonoBehaviour
     public Rigidbody rb;
     public Vector3 targetPos;
     public Vector2 bounds;
- 
+    public Wall wall;
     void Start()
     {
      
@@ -49,13 +49,18 @@ public class Character : MonoBehaviour
         print("drag");
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
 
-        if (other.gameObject.layer==LayerMask.NameToLayer("Finish"))
+
+    public void DestructWall()
+    {
+        Rigidbody[] rigidbodies=  wall.transform.GetComponentsInChildren<Rigidbody>();
+          print(rigidbodies.Length);
+        for (int i = 0; i < rigidbodies.Length; i++)
         {
-            GameManager.Instance.isFinishLevel = true;
-            StopCoroutine("MoveRoutine");
+            print("calis");
+           
+            rigidbodies[i].AddExplosionForce(220,rigidbodies[i].position,3f,3f,ForceMode.Impulse);
         }
     }
+ 
 }

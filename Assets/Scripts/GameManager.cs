@@ -7,6 +7,7 @@ public class GameManager : MonoSingleton<GameManager>
     // Start is called before the first frame update
 {
     public Character _character;
+    public bool isPunch = false;
     public int money,moneyRate;
     public Animator characterAnim;
     public bool tapToPlay = false;
@@ -15,6 +16,7 @@ public class GameManager : MonoSingleton<GameManager>
     public string state = "IdleRoutine";
     public Transform leftHand, rightHand;
     public float handScaleRate = 0.2f;
+  
     private void Start()
     {
         StartGame();
@@ -46,12 +48,13 @@ public class GameManager : MonoSingleton<GameManager>
     string currentAnimation;
     public void RegisterAnimation(string value)
     {
-        print("Idl111ee");
+
         if (value == currentAnimation)
             return;
         
         print("Idlee");
         currentAnimation = value;
+       
         characterAnim.CrossFade(currentAnimation,0.25f);
     }
     
@@ -73,7 +76,8 @@ public class GameManager : MonoSingleton<GameManager>
                 print("false");
                 ChangeState("IdleRoutine");
             }
-            
+           else if(isPunch)
+                ChangeState("PunchRoutine");
             else if(isFinishLevel )
                 ChangeState("DanceRoutine");
             else if (currentStack<maxStack)
@@ -133,5 +137,21 @@ public class GameManager : MonoSingleton<GameManager>
 
         StartCoroutine(state);
     }
+    IEnumerator PunchRoutine()
+    { 
+        
+        if (state=="PunchRoutine")
+        {
+            RegisterAnimation("punch");
+            
+            yield return null;
+        }
+
+        StartCoroutine(state);
+    }
+
+ 
+
+   
 
 }
