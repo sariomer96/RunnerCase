@@ -2,8 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
-public class Stack : Collectables,IStackState
+public class Stack : Collectables,IStackState,IHandGrow
 {
     // Start is called before the first frame update
    
@@ -34,9 +35,16 @@ public class Stack : Collectables,IStackState
         {
             IncreaseValue();
             CollectItem();
+            ChangeHandScale();
         }
       
        
+    }
+
+    public void ChangeHandScale()
+    {
+        GameManager.Instance.leftHand.DOScale(GameManager.Instance.handScaleRate, 0.25f).SetRelative().SetEase(Ease.Linear);
+        GameManager.Instance.rightHand.DOScale(GameManager.Instance.handScaleRate, 0.25f).SetRelative().SetEase(Ease.Linear);
     }
 }
 

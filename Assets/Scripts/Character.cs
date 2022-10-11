@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,18 +19,13 @@ public class Character : MonoBehaviour
      
         InputPanel.Instance.OnDragDelta.AddListener(Drag);
         
-       
         rb = transform.GetComponent<Rigidbody>();
-        StartCoroutine("MoveRoutine");
+       
      
     }
 
 
-    public virtual Vector2 SetInput()
-    {
-        
-        return Vector2.down;
-    }
+ 
    public  virtual  IEnumerator MoveRoutine()
     {
         
@@ -52,9 +48,14 @@ public class Character : MonoBehaviour
         
         print("drag");
     }
-  
 
-  
+    private void OnTriggerEnter(Collider other)
+    {
 
-   
+        if (other.gameObject.layer==LayerMask.NameToLayer("Finish"))
+        {
+            GameManager.Instance.isFinishLevel = true;
+            StopCoroutine("MoveRoutine");
+        }
+    }
 }

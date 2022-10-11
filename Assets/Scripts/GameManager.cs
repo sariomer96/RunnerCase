@@ -10,9 +10,11 @@ public class GameManager : MonoSingleton<GameManager>
     public int money,moneyRate;
     public Animator characterAnim;
     public bool tapToPlay = false;
-    [SerializeField] private bool isFinishLevel = false;
+     public bool isFinishLevel = false;
     public int currentStack, maxStack;
     public string state = "IdleRoutine";
+    public Transform leftHand, rightHand;
+    public float handScaleRate = 0.2f;
     private void Start()
     {
         StartGame();
@@ -26,7 +28,21 @@ public class GameManager : MonoSingleton<GameManager>
         characterAnim = _character.transform.GetComponentInChildren<Animator>();
         StartCoroutine("DecisionAnimRoutine");
         StartCoroutine(state);
+     
     }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0)&&!tapToPlay)
+        {
+            _character.StartCoroutine("MoveRoutine");
+           InputPanel.Instance.OnDragDelta.AddListener(_character.Drag);
+
+            tapToPlay = true;
+
+        }
+    }
+
     string currentAnimation;
     public void RegisterAnimation(string value)
     {
