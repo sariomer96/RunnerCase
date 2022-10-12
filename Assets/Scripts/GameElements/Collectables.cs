@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using PunchRunner.Managers;
 using UnityEngine;
 
 public class Collectables : MonoBehaviour
@@ -17,7 +18,7 @@ public class Collectables : MonoBehaviour
 
     public virtual void CollectItem()
     {
-        transform.gameObject.SetActive(false);
+       this.gameObject.SetActive(false);
     }
 
  

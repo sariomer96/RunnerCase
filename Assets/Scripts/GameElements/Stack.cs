@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using PunchRunner.Interfaces;
+using PunchRunner.Managers;
 
 public class Stack : Collectables,IStackState
 {
@@ -16,10 +18,7 @@ public class Stack : Collectables,IStackState
         UIManager.Instance.FillProgressBar();
 
     }
-    public override void CollectItem()
-    {
-        transform.gameObject.SetActive(false);
-    }
+   
 
     public bool isStackFull()
     {
@@ -42,11 +41,8 @@ public class Stack : Collectables,IStackState
             GameManager.Instance.character.SpeedUp();
         }
         else
-        {
-
             StartCoroutine("FullStackWarning");
-
-        }
+ 
        
     }
 

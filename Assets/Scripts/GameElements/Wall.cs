@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using PunchRunner.Interfaces;
+using PunchRunner.Managers;
 using UnityEngine;
 
 public class Wall : MonoBehaviour,IHandGrow
@@ -15,19 +17,11 @@ public class Wall : MonoBehaviour,IHandGrow
         
         if (GameManager.Instance.leftHand.transform.localScale.x<=1.2f&&character)
         {
-            
-            GameManager.Instance.cameraFollow.StopCoroutine("FollowRoutine");
-            GameManager.Instance.cameraFollow.StartCoroutine("CamZoom");
-            GameManager.Instance.isFinishLevel = true;
-            GameManager.Instance.character.StopCoroutine("MoveRoutine");
             other.enabled = false;
-            UIManager.Instance.endPanel.SetActive(true);
-            InputPanel.Instance.OnDragDelta.RemoveListener(character.Drag);
+            GameManager.Instance.Win();
         }
         else if(character)
         {
-
-          
             ChangeHandScale();
             character.wall = this;
             StartCoroutine("WaitForPunch");

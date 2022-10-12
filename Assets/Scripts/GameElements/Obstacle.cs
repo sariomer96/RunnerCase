@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using PunchRunner.Interfaces;
+using PunchRunner.Managers;
 using Unity.Mathematics;
 using UnityEngine;
 using Random = System.Random;
