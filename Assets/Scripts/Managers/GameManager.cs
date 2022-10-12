@@ -2,11 +2,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
 
 public class GameManager : MonoSingleton<GameManager>
     // Start is called before the first frame update
 {
+   
+    [SerializeField] public int upgradePrice,upgradeRate,baseExpValue;
+    public float speed,speedRate;
+    public int expRate;
+    public int maxStackIncreaseRate;
+    public  GameObject smashParticle;
+    public string fullStack = "Stack is Full!";
     public Character character;
     public bool isPunch = false;
     public int money,moneyRate;  //currency
@@ -21,15 +32,37 @@ public class GameManager : MonoSingleton<GameManager>
     private void Start()
     {
         StartGame();
-        money = PlayerPrefs.GetInt("currency");
+   
+        
     }
 
 
+    void LoadData()
+    {
+        money = PlayerPrefs.GetInt("currency",money);
+        expRate=PlayerPrefs.GetInt("expRate",2);
+        upgradePrice= PlayerPrefs.GetInt("upgradePrice",upgradePrice);
+        maxStack = PlayerPrefs.GetInt("maxStackCapacity", maxStack);
+    }
+
+    public void SaveData()
+    {
+        PlayerPrefs.SetInt("expRate", GameManager.Instance.expRate);
+        PlayerPrefs.SetInt("upgradePrice",GameManager.Instance.upgradePrice);
+        PlayerPrefs.SetInt("currency",GameManager.Instance.money);
+        PlayerPrefs.SetInt("maxStackCapacity", maxStack);
+    }
 
     void StartGame()
     {
        
-       LevelManager.Instance.SpawnLevel();
+         
+         
+    
+        LoadData();
+        UIManager.Instance.upgradePriceTxt.text = upgradePrice.ToString();
+        UpgradeManager.Instance.CurrencyCheck();  // upgrade button interact check 
+        LevelManager.Instance.SpawnLevel();
         cameraFollow = FindObjectOfType<CameraFollow>();
         cameraFollow.StartCoroutine("FollowRoutine");
         characterAnim = character.transform.GetComponentInChildren<Animator>();
@@ -38,17 +71,21 @@ public class GameManager : MonoSingleton<GameManager>
      
     }
 
+  
     private void Update()
     {
-        
-        if (Input.GetMouseButtonDown(0)&&!tapToPlay)
+        if (!EventSystem.current.currentSelectedGameObject)
         {
-            character.StartCoroutine("MoveRoutine");
-           InputPanel.Instance.OnDragDelta.AddListener(character.Drag);
+            if (Input.GetMouseButtonDown(0)&&!tapToPlay)
+            {
+                character.StartCoroutine("MoveRoutine");
+                InputPanel.Instance.OnDragDelta.AddListener(character.Drag);
+                UIManager.Instance.upgradeBtn.gameObject.SetActive(false);
+                tapToPlay = true;
 
-            tapToPlay = true;
-
+            }
         }
+     
     }
 
     string currentAnimation;

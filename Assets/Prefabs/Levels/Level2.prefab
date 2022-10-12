@@ -186,7 +186,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2019336536117571747, guid: 3ba5ba4c0c0a37c4ea832473f5dd99c0, type: 3}
       propertyPath: ObstacleEnum
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2019336536117571747, guid: 3ba5ba4c0c0a37c4ea832473f5dd99c0, type: 3}
       propertyPath: randDelayRange
@@ -264,7 +264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2019336536117571747, guid: 3ba5ba4c0c0a37c4ea832473f5dd99c0, type: 3}
       propertyPath: ObstacleEnum
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2019336536117571747, guid: 3ba5ba4c0c0a37c4ea832473f5dd99c0, type: 3}
       propertyPath: randDelayRange
@@ -342,7 +342,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2019336536117571747, guid: 3ba5ba4c0c0a37c4ea832473f5dd99c0, type: 3}
       propertyPath: ObstacleEnum
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2019336536117571747, guid: 3ba5ba4c0c0a37c4ea832473f5dd99c0, type: 3}
       propertyPath: randDelayRange
@@ -486,7 +486,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2019336536117571747, guid: 3ba5ba4c0c0a37c4ea832473f5dd99c0, type: 3}
       propertyPath: ObstacleEnum
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2019336536117571747, guid: 3ba5ba4c0c0a37c4ea832473f5dd99c0, type: 3}
       propertyPath: randDelayRange
@@ -1700,7 +1700,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2019336536117571747, guid: 3ba5ba4c0c0a37c4ea832473f5dd99c0, type: 3}
       propertyPath: ObstacleEnum
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2019336536117571747, guid: 3ba5ba4c0c0a37c4ea832473f5dd99c0, type: 3}
       propertyPath: randDelayRange
@@ -1902,7 +1902,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2019336536117571747, guid: 3ba5ba4c0c0a37c4ea832473f5dd99c0, type: 3}
       propertyPath: ObstacleEnum
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2019336536117571747, guid: 3ba5ba4c0c0a37c4ea832473f5dd99c0, type: 3}
       propertyPath: randDelayRange
@@ -2294,7 +2294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2019336536117571747, guid: 3ba5ba4c0c0a37c4ea832473f5dd99c0, type: 3}
       propertyPath: ObstacleEnum
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4912595024904148716, guid: 3ba5ba4c0c0a37c4ea832473f5dd99c0, type: 3}
       propertyPath: m_RootOrder
@@ -3000,7 +3000,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2019336536117571747, guid: 3ba5ba4c0c0a37c4ea832473f5dd99c0, type: 3}
       propertyPath: ObstacleEnum
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2019336536117571747, guid: 3ba5ba4c0c0a37c4ea832473f5dd99c0, type: 3}
       propertyPath: randDelayRange

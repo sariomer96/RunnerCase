@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-
-public class Character : MonoBehaviour
+using  DG.Tweening;
+public class Character : MonoBehaviour,IHandGrow
 {
     // Start is called before the first frame update
-    public float speed;
+   
     public float sensitivity;
     public Rigidbody rb;
     public Vector3 targetPos;
@@ -23,7 +23,16 @@ public class Character : MonoBehaviour
        
      
     }
+    public void ChangeHandScale()
+    {
+        GameManager.Instance.leftHand.DOScale(GameManager.Instance.handScaleRate, 0.25f).SetRelative().SetEase(Ease.Linear);
+        GameManager.Instance.rightHand.DOScale(GameManager.Instance.handScaleRate, 0.25f).SetRelative().SetEase(Ease.Linear);
+    }
 
+   public void SpeedUp()
+    {
+        GameManager.Instance.speed += GameManager.Instance.speedRate;
+    }
 
  
    public  virtual  IEnumerator MoveRoutine()
@@ -32,7 +41,7 @@ public class Character : MonoBehaviour
          
         while (true)
         {
-            targetPos += transform.forward * speed;
+            targetPos += transform.forward * GameManager.Instance.speed*Time.fixedDeltaTime;
             rb.MovePosition(targetPos);
    
             yield return new WaitForFixedUpdate();

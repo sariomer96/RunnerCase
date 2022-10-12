@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class Stack : Collectables,IStackState,IHandGrow
+public class Stack : Collectables,IStackState
 {
     // Start is called before the first frame update
    
@@ -35,17 +35,28 @@ public class Stack : Collectables,IStackState,IHandGrow
         {
             IncreaseValue();
             CollectItem();
-            ChangeHandScale();
+            GameManager.Instance.character.ChangeHandScale();
+            GameManager.Instance.character.SpeedUp();
         }
-      
+        else
+        {
+
+            StartCoroutine("FullStackWarning");
+
+        }
        
     }
 
-    public void ChangeHandScale()
+    IEnumerator FullStackWarning()
     {
-        GameManager.Instance.leftHand.DOScale(GameManager.Instance.handScaleRate, 0.25f).SetRelative().SetEase(Ease.Linear);
-        GameManager.Instance.rightHand.DOScale(GameManager.Instance.handScaleRate, 0.25f).SetRelative().SetEase(Ease.Linear);
+        UIManager.Instance.fullStackTxt.text = GameManager.Instance.fullStack;
+            
+        UIManager.Instance.fullStackTxt.transform.DORewind ();
+        UIManager.Instance.fullStackTxt.transform.DOShakeScale(0.78f, 0.25f);
+        yield return new WaitForSeconds(0.8f);
+        UIManager.Instance.fullStackTxt.text = "";
     }
+ 
 }
 
 

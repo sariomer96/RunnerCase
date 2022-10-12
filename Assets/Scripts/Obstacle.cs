@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Unity.Mathematics;
 using UnityEngine;
 using Random = System.Random;
 
@@ -49,6 +50,7 @@ public class Obstacle : MonoBehaviour,IHandGrow
     private void OnTriggerEnter(Collider other)
     {
         Character character = other.GetComponent<Character>();
+        Instantiate(GameManager.Instance.smashParticle, transform.position+Vector3.up*1.5f, quaternion.identity);
         if (character&&GameManager.Instance.currentStack>0)
         {
             DecreaseStack();
