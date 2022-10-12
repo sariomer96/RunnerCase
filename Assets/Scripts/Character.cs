@@ -62,6 +62,7 @@ public class Character : MonoBehaviour,IHandGrow
 
     public void DestructWall()
     {
+        GameManager.Instance.PlayAudio(GameManager.Instance.punchClip);
         Rigidbody[] rigidbodies=  wall.transform.GetComponentsInChildren<Rigidbody>();
           print(rigidbodies.Length);
         for (int i = 0; i < rigidbodies.Length; i++)

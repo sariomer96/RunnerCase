@@ -16,6 +16,7 @@ public class UIManager : MonoSingleton<UIManager>
     public TextMeshProUGUI totalCurrencyTxt;
     public TextMeshProUGUI  StackTxt;
     public TextMeshProUGUI tapToPlayCurrencyTxt;
+    public TextMeshProUGUI lvlTxt;
     public GameObject tapToPlayPanel, inGamePanel, endPanel;
     public Image fillImg;
 

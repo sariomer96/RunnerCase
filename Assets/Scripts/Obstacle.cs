@@ -55,6 +55,7 @@ public class Obstacle : MonoBehaviour,IHandGrow
         Instantiate(GameManager.Instance.smashParticle, transform.position+Vector3.up*1.5f, quaternion.identity);
         if (character&&GameManager.Instance.currentStack>0)
         {
+            GameManager.Instance.PlayAudio(GameManager.Instance.obstacleClip);
             DecreaseStack();
             ChangeHandScale();
         }

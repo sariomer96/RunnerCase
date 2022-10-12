@@ -27,7 +27,7 @@ public class Collectables : MonoBehaviour
 
       if (character)
       {
-          
+          GameManager.Instance.PlayAudio(GameManager.Instance.stackClip);
           IncreaseValue();
           CollectItem();
       }

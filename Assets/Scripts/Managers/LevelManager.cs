@@ -19,6 +19,8 @@ public class LevelManager :MonoSingleton<LevelManager>
         if (levels.Length == 0)
             return;
         levelIndex = PlayerPrefs.GetInt("Level") % levels.Length;
+
+     
         Instantiate(levels[levelIndex]);
     }
 

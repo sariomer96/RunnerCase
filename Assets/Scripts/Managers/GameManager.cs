@@ -15,6 +15,7 @@ public class GameManager : MonoSingleton<GameManager>
     public int collectedCurrency=0;
     public float speed,speedRate;
     public int expRate;
+    public string lvl = "LEVEL";
     public int maxStackIncreaseRate;
     public  GameObject smashParticle;
     public string fullStack = "Stack is Full!";
@@ -29,15 +30,22 @@ public class GameManager : MonoSingleton<GameManager>
     public Transform leftHand, rightHand;
     public float handScaleRate = 0.2f;
     public CameraFollow cameraFollow;
+    public AudioSource audioSource;
+    public AudioClip stackClip, obstacleClip,punchClip;
     private void Start()
     {
         LoadData();
         StartGame();
-   
+
         
     }
 
 
+    public void PlayAudio(AudioClip audioClip)
+    {
+        audioSource.clip = audioClip;
+        audioSource.Play();
+    }
     void LoadData()
     {
         money = PlayerPrefs.GetInt("currency",money);
@@ -57,9 +65,8 @@ public class GameManager : MonoSingleton<GameManager>
     void StartGame()
     {
 
-
-
-
+        UIManager.Instance.lvlTxt.text = lvl + " " +  PlayerPrefs.GetInt("Level", PlayerPrefs.GetInt("Level") + 1);
+        audioSource = transform.GetComponent<AudioSource>();
         UIManager.Instance.totalCurrencyTxt.text = money.ToString();
         UIManager.Instance.tapToPlayCurrencyTxt.text = money.ToString();
         UIManager.Instance.SetStackTxt();

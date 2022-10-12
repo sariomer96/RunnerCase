@@ -37,6 +37,7 @@ public class Stack : Collectables,IStackState
         {
             IncreaseValue();
             CollectItem();
+            GameManager.Instance.PlayAudio(GameManager.Instance.stackClip);
             GameManager.Instance.character.ChangeHandScale();
             GameManager.Instance.character.SpeedUp();
         }
