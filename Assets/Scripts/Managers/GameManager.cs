@@ -9,7 +9,7 @@ public class GameManager : MonoSingleton<GameManager>
 {
     public Character character;
     public bool isPunch = false;
-    public int money,moneyRate;
+    public int money,moneyRate;  //currency
     public Animator characterAnim;
     public bool tapToPlay = false;
      public bool isFinishLevel = false;
@@ -21,6 +21,7 @@ public class GameManager : MonoSingleton<GameManager>
     private void Start()
     {
         StartGame();
+        money = PlayerPrefs.GetInt("currency");
     }
 
 
@@ -39,6 +40,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Update()
     {
+        
         if (Input.GetMouseButtonDown(0)&&!tapToPlay)
         {
             character.StartCoroutine("MoveRoutine");

@@ -10,6 +10,7 @@ public class Collectables : MonoBehaviour
     public virtual void IncreaseValue()
     {
         GameManager.Instance.money += GameManager.Instance.moneyRate;
+        PlayerPrefs.SetInt("currency",GameManager.Instance.money);
     }
 
     public virtual void CollectItem()
