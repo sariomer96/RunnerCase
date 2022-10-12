@@ -22,7 +22,7 @@ namespace PunchRunner.Managers
 
         public void SetUpgradeText()
         {
-            upgradePriceTxt.text = GameManager.Instance.upgradePrice+"$";
+            upgradePriceTxt.text = GameManager.Instance.upgradePrice.ToString();
         }
 
         public void SetTotalCurrencyText()

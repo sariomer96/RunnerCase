@@ -71,7 +71,7 @@ namespace PunchRunner.Managers
         void StartGame()
         {
 
-            UIManager.Instance.lvlTxt.text = lvl + " " +  PlayerPrefs.GetInt("Level", PlayerPrefs.GetInt("Level") + 1);
+            UIManager.Instance.lvlTxt.text = lvl + " " + (PlayerPrefs.GetInt("Level",0)+1) ;
             audioSource = transform.GetComponent<AudioSource>();
             UIManager.Instance.totalCurrencyTxt.text = money.ToString();
        
