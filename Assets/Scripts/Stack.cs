@@ -12,6 +12,8 @@ public class Stack : Collectables,IStackState
     {
 
         GameManager.Instance.currentStack++;
+        UIManager.Instance.SetStackTxt();
+        UIManager.Instance.FillProgressBar();
 
     }
     public override void CollectItem()

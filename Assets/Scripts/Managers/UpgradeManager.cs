@@ -20,6 +20,7 @@ public class UpgradeManager : MonoSingleton<UpgradeManager>
         GameManager.Instance.upgradePrice = (int)Mathf.Pow(GameManager.Instance.baseExpValue, GameManager.Instance.expRate);
         GameManager.Instance.maxStack += GameManager.Instance.maxStackIncreaseRate;
         UIManager.Instance.SetUpgradeText();
+        UIManager.Instance.SetTotalCurrencyText();
         GameManager.Instance.expRate++;
         GameManager.Instance.SaveData();
         // save price

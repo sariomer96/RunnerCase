@@ -31,6 +31,7 @@ public class GameManager : MonoSingleton<GameManager>
     public CameraFollow cameraFollow;
     private void Start()
     {
+        LoadData();
         StartGame();
    
         
@@ -55,11 +56,12 @@ public class GameManager : MonoSingleton<GameManager>
 
     void StartGame()
     {
-       
-         
-         
-    
-        LoadData();
+
+
+
+
+        UIManager.Instance.totalCurrencyTxt.text = money.ToString();
+        UIManager.Instance.SetStackTxt();
         UIManager.Instance.upgradePriceTxt.text = upgradePrice.ToString();
         UpgradeManager.Instance.CurrencyCheck();  // upgrade button interact check 
         LevelManager.Instance.SpawnLevel();

@@ -44,6 +44,8 @@ public class Obstacle : MonoBehaviour,IHandGrow
     public void DecreaseStack()
     {
         GameManager.Instance.currentStack--;
+        UIManager.Instance.SetStackTxt();
+        UIManager.Instance.FillProgressBar();
     }
 
 

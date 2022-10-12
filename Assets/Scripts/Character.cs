@@ -51,7 +51,7 @@ public class Character : MonoBehaviour,IHandGrow
 
     public void Drag(Vector2 delta)   //PLAYER
     {
-        print(delta.x);
+        
         targetPos.x += delta.normalized.x * sensitivity;
         targetPos.x = Mathf.Clamp(targetPos.x, bounds.x, bounds.y);
         
@@ -66,7 +66,7 @@ public class Character : MonoBehaviour,IHandGrow
           print(rigidbodies.Length);
         for (int i = 0; i < rigidbodies.Length; i++)
         {
-            print("calis");
+           
            
             rigidbodies[i].AddExplosionForce(220,rigidbodies[i].position,3f,3f,ForceMode.Impulse);
             Destroy(rigidbodies[i].gameObject,5f);
