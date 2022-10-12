@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PositionEvent :UnityEvent<Vector2>
+namespace PunchRunner.Events
 {
+    public class PositionEvent :UnityEvent<Vector2>
+    {
  
+    }
 }

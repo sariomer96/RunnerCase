@@ -1,38 +1,38 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using PunchRunner.Managers;
 using UnityEngine;
 
-public class Collectables : MonoBehaviour
+namespace PunchRunner.GameElements
 {
-    // Start is called before the first frame update
-
-    public virtual void IncreaseValue()
+    public class Collectables : MonoBehaviour
     {
-        GameManager.Instance.money += GameManager.Instance.moneyRate;
-        GameManager.Instance.collectedCurrency += GameManager.Instance.moneyRate;
-        PlayerPrefs.SetInt("currency",GameManager.Instance.money);
-        UIManager.Instance.SetTotalCurrencyText();
-    }
+        // Start is called before the first frame update
 
-    public virtual void CollectItem()
-    {
-       this.gameObject.SetActive(false);
-    }
+        public virtual void IncreaseValue()
+        {
+            GameManager.Instance.money += GameManager.Instance.moneyRate;
+            GameManager.Instance.collectedCurrency += GameManager.Instance.moneyRate;
+            PlayerPrefs.SetInt("currency",GameManager.Instance.money);
+            UIManager.Instance.SetTotalCurrencyText();
+        }
+
+        public virtual void CollectItem()
+        {
+            this.gameObject.SetActive(false);
+        }
 
  
-    protected virtual  void OnTriggerEnter(Collider other)
-    {
-      Character character=  other.transform.GetComponent<Character>();
+        protected virtual  void OnTriggerEnter(Collider other)
+        {
+            Character character=  other.transform.GetComponent<Character>();
 
-      if (character)
-      {
-          GameManager.Instance.PlayAudio(GameManager.Instance.stackClip);
-          IncreaseValue();
-          CollectItem();
-      }
+            if (character)
+            {
+                GameManager.Instance.PlayAudio(GameManager.Instance.stackClip);
+                IncreaseValue();
+                CollectItem();
+            }
          
        
+        }
     }
 }

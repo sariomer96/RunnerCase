@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using PunchRunner.Managers;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
@@ -27,7 +28,7 @@ public class CameraFollow : MonoBehaviour
        
     }
 
-    public IEnumerator CamZoom()
+    public IEnumerator CamRotate()
     {
       yield return  transform.DOMove(-transform.forward * 2, 0.35f).SetRelative().WaitForCompletion();
       while (true)

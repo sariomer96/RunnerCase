@@ -5,11 +5,15 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using  DG.Tweening;
+using PunchRunner.GameElements;
+using PunchRunner.Interfaces;
+using PunchRunner.Managers;
+
 public class Character : MonoBehaviour,IHandGrow
 {
     // Start is called before the first frame update
    
-    public float sensitivity;
+ 
     public Rigidbody rb;
     public Vector3 targetPos;
     public Vector2 bounds;
@@ -37,8 +41,6 @@ public class Character : MonoBehaviour,IHandGrow
  
    public  virtual  IEnumerator MoveRoutine()
     {
-        
-         
         while (true)
         {
             targetPos += transform.forward * GameManager.Instance.speed*Time.fixedDeltaTime;
@@ -52,22 +54,19 @@ public class Character : MonoBehaviour,IHandGrow
     public void Drag(Vector2 delta)   //PLAYER
     {
         
-        targetPos.x += delta.normalized.x * sensitivity;
+        targetPos.x += delta.normalized.x * GameManager.Instance.sensitivity;
         targetPos.x = Mathf.Clamp(targetPos.x, bounds.x, bounds.y);
-        
-        print("drag");
+       
+       
     }
-
-
 
     public void DestructWall()
     {
         GameManager.Instance.PlayAudio(GameManager.Instance.punchClip);
         Rigidbody[] rigidbodies=  wall.transform.GetComponentsInChildren<Rigidbody>();
-          print(rigidbodies.Length);
+        
         for (int i = 0; i < rigidbodies.Length; i++)
         {
-           
            
             rigidbodies[i].AddExplosionForce(220,rigidbodies[i].position,3f,3f,ForceMode.Impulse);
             Destroy(rigidbodies[i].gameObject,5f);

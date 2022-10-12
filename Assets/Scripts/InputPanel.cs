@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using PunchRunner.Events;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
  
 public class InputPanel :  MonoSingleton<InputPanel>,
-    IDragHandler,IPointerUpHandler, IPointerDownHandler
+    IDragHandler
 
 {
 
@@ -27,7 +28,7 @@ public class InputPanel :  MonoSingleton<InputPanel>,
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        print("invoke");
+    
         this.OnPointerUpEvent.Invoke();
     }
 

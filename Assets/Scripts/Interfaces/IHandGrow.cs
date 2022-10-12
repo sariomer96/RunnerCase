@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface IHandGrow 
+namespace PunchRunner.Interfaces
 {
+    public interface IHandGrow 
+    {
  
 
-    public void ChangeHandScale();
+        public void ChangeHandScale();
+    }
 }
