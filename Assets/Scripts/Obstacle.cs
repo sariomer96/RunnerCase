@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using Random = System.Random;
 
 public class Obstacle : MonoBehaviour,IHandGrow
 {
@@ -11,12 +12,13 @@ public class Obstacle : MonoBehaviour,IHandGrow
     public float moveSpeed = 50f;
     public int direction = 1;
     public float rangeX = 2f;
-
+    public float randDelayRange;
     [System.Flags]
     public enum ObstacleState
     {
         Rotate,
         Move,
+        UpDown
       
     }
     public ObstacleState ObstacleEnum;
@@ -31,6 +33,10 @@ public class Obstacle : MonoBehaviour,IHandGrow
             
         if (ObstacleEnum.HasFlag(ObstacleState.Rotate))
             RotateObstacle();
+        if (ObstacleEnum.HasFlag(ObstacleState.UpDown))
+        {
+            UpDownObstacle();
+        }
        
     }
 
@@ -58,10 +64,17 @@ public class Obstacle : MonoBehaviour,IHandGrow
     
     }
 
+    public void UpDownObstacle()
+    {
+        float delay= UnityEngine.Random.Range(0, randDelayRange);
+        float posY =  rangeX*direction;
+        transform.DOMoveY(posY, moveSpeed).SetLoops (-1, LoopType.Yoyo).SetRelative().SetEase(Ease.Linear).SetDelay(delay);
+    }
     public void MoveObstacle()
     {
+       float delay= UnityEngine.Random.Range(0, randDelayRange);
         Vector3 pos = transform.right *rangeX*direction;
-        transform.DOMove(pos, moveSpeed).SetLoops (-1, LoopType.Yoyo).SetRelative().SetEase(Ease.Linear);
+        transform.DOMove(pos, moveSpeed).SetLoops (-1, LoopType.Yoyo).SetRelative().SetEase(Ease.Linear).SetDelay(delay);
     }
 
     public void ChangeHandScale()

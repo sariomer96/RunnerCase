@@ -34,17 +34,7 @@ public class Wall : MonoBehaviour,IHandGrow
 
     
 
-    /*void Destruct()
-    {
-        Rigidbody[] rigidbodies=  transform.GetComponentsInChildren<Rigidbody>();
-        print(rigidbodies.Length);
-        for (int i = 0; i < rigidbodies.Length; i++)
-        {
-            print("calis");
-           
-            rigidbodies[i].AddExplosionForce(9000,rigidbodies[i].position,3f,2f,ForceMode.Force);
-        }
-    }*/
+   
     IEnumerator WaitForPunch()
     {
         GameManager.Instance.isPunch = true;

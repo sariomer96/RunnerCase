@@ -60,6 +60,7 @@ public class Character : MonoBehaviour
             print("calis");
            
             rigidbodies[i].AddExplosionForce(220,rigidbodies[i].position,3f,3f,ForceMode.Impulse);
+            Destroy(rigidbodies[i].gameObject,5f);
         }
     }
  

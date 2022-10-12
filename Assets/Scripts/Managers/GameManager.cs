@@ -28,7 +28,7 @@ public class GameManager : MonoSingleton<GameManager>
     void StartGame()
     {
        
-       
+       LevelManager.Instance.SpawnLevel();
         cameraFollow = FindObjectOfType<CameraFollow>();
         cameraFollow.StartCoroutine("FollowRoutine");
         characterAnim = character.transform.GetComponentInChildren<Animator>();
