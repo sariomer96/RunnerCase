@@ -11,9 +11,12 @@ public class UIManager : MonoSingleton<UIManager>
    public Button upgradeBtn;
  
     public TextMeshProUGUI fullStackTxt;
+    public TextMeshProUGUI collectedCurrencyTxt;
     public TextMeshProUGUI upgradePriceTxt;
     public TextMeshProUGUI totalCurrencyTxt;
     public TextMeshProUGUI  StackTxt;
+    public TextMeshProUGUI tapToPlayCurrencyTxt;
+    public GameObject tapToPlayPanel, inGamePanel, endPanel;
     public Image fillImg;
 
     public void SetUpgradeText()
@@ -24,6 +27,7 @@ public class UIManager : MonoSingleton<UIManager>
     public void SetTotalCurrencyText()
     {
         totalCurrencyTxt.text = GameManager.Instance.money.ToString();
+        collectedCurrencyTxt.text = GameManager.Instance.collectedCurrency.ToString();
     }
 
     public void SetStackTxt()

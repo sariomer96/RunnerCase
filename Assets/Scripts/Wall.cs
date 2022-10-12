@@ -21,6 +21,7 @@ public class Wall : MonoBehaviour,IHandGrow
             GameManager.Instance.isFinishLevel = true;
             GameManager.Instance.character.StopCoroutine("MoveRoutine");
             other.enabled = false;
+            UIManager.Instance.endPanel.SetActive(true);
         }
         else if(character)
         {

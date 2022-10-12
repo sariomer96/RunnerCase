@@ -11,8 +11,8 @@ using Button = UnityEngine.UI.Button;
 public class GameManager : MonoSingleton<GameManager>
     // Start is called before the first frame update
 {
-   
-    [SerializeField] public int upgradePrice,upgradeRate,baseExpValue;
+    public int upgradePrice,upgradeRate,baseExpValue;
+    public int collectedCurrency=0;
     public float speed,speedRate;
     public int expRate;
     public int maxStackIncreaseRate;
@@ -61,6 +61,7 @@ public class GameManager : MonoSingleton<GameManager>
 
 
         UIManager.Instance.totalCurrencyTxt.text = money.ToString();
+        UIManager.Instance.tapToPlayCurrencyTxt.text = money.ToString();
         UIManager.Instance.SetStackTxt();
         UIManager.Instance.upgradePriceTxt.text = upgradePrice.ToString();
         UpgradeManager.Instance.CurrencyCheck();  // upgrade button interact check 
@@ -83,6 +84,8 @@ public class GameManager : MonoSingleton<GameManager>
                 character.StartCoroutine("MoveRoutine");
                 InputPanel.Instance.OnDragDelta.AddListener(character.Drag);
                 UIManager.Instance.upgradeBtn.gameObject.SetActive(false);
+                UIManager.Instance.tapToPlayPanel.SetActive(false);
+                UIManager.Instance.inGamePanel.SetActive(true);
                 tapToPlay = true;
 
             }
